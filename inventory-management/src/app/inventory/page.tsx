@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetProdutsQuery } from "@/state/api";
+import { useGetProductsQuery } from "@/state/api";
 import Header from "@/app/(components)/Header";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
@@ -30,7 +30,7 @@ const columns: GridColDef[] = [
 ];
 
 const Inventory = () => {
-  const { data: products, isError, isLoading } = useGetProdutsQuery();
+  const { data: products, isError, isLoading } = useGetProductsQuery();
 
   if (isLoading) {
     return <div className="py-4">Loading...</div>;

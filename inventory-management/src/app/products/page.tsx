@@ -1,5 +1,5 @@
 "use client";
-import { useCreateProductMutation, useGetProdutsQuery } from "@/state/api";
+import { useCreateProductMutation, useGetProductsQuery } from "@/state/api";
 import { PlusCircleIcon, SearchIcon } from "lucide-react";
 import { useState } from "react";
 import Header from "@/app/(components)/Header";
@@ -17,7 +17,11 @@ const Products = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { data: products, isLoading, isError } = useGetProdutsQuery(searchTerm);
+  const {
+    data: products,
+    isLoading,
+    isError,
+  } = useGetProductsQuery(searchTerm);
 
   const [createProduct] = useCreateProductMutation();
 
