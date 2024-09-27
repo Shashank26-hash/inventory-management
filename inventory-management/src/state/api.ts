@@ -1,6 +1,4 @@
-import { ReducerType } from "@reduxjs/toolkit";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { getExpensesByCategory } from "../../../server/src/controllers/expenseController";
 
 export interface Product {
   productId: string;
@@ -9,12 +7,14 @@ export interface Product {
   rating?: number;
   stockQuantity: number;
 }
+
 export interface NewProduct {
   name: string;
   price: number;
   rating?: number;
   stockQuantity: number;
 }
+
 export interface SalesSummary {
   salesSummaryId: string;
   totalValue: number;
@@ -30,7 +30,7 @@ export interface PurchaseSummary {
 }
 
 export interface ExpenseSummary {
-  expenseSummaryId: string;
+  expenseSummarId: string;
   totalExpenses: number;
   date: string;
 }
@@ -53,7 +53,7 @@ export interface DashboardMetrics {
 export interface User {
   userId: string;
   name: string;
-  emai: string;
+  email: string;
 }
 
 export const api = createApi({
@@ -65,7 +65,7 @@ export const api = createApi({
       query: () => "/dashboard",
       providesTags: ["DashboardMetrics"],
     }),
-    getProduts: build.query<Product[], string | void>({
+    getProducts: build.query<Product[], string | void>({
       query: (search) => ({
         url: "/products",
         params: search ? { search } : {},
@@ -90,9 +90,10 @@ export const api = createApi({
     }),
   }),
 });
+
 export const {
   useGetDashboardMetricsQuery,
-  useGetProdutsQuery,
+  useGetProductsQuery,
   useCreateProductMutation,
   useGetUsersQuery,
   useGetExpensesByCategoryQuery,
